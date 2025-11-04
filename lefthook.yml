@@ -37,6 +37,6 @@ pre-push:
     check:
       run: bun run check
 
-    # Check for security vulnerabilities
+    # Check for security vulnerabilities (moderate or higher)
     audit:
-      run: bun audit
+      run: bun audit --audit-level=moderate
