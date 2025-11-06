@@ -1,0 +1,42 @@
+# lefthook configuration for Svelte/TypeScript project with Biome
+# Docs: https://lefthook.dev/configuration/
+
+# Commit message validation using commitlint
+# See: https://commitlint.js.org/
+commit-msg:
+  parallel: false
+  commands:
+    validate-commit-msg:
+      run: bunx commitlint --edit {1} --config .commitlintrc.json
+
+# Pre-commit hooks run on git commit
+pre-commit:
+  parallel: true  # Run hooks in parallel for better performance
+  commands:
+    # TypeScript type checking
+    types:
+      glob: "*.{ts,tsx}"
+      run: bun tsc --noEmit
+
+    # Svelte Check for Svelte components
+    svelte-check:
+      glob: "**/*.svelte"
+      run: bun run svelte-check --fail-on-warnings
+
+    # Format and lint with Biome
+    biome:
+      glob: "*.{js,ts,jsx,tsx,json,css,scss,html,md,svelte}"
+      run: bun run biome:check {staged_files}
+      stage_fixed: true
+
+# Pre-push hooks run on git push
+pre-push:
+  parallel: true
+  commands:
+    # Run type checking and linting
+    check:
+      run: bun run check
+
+    # Check for security vulnerabilities (moderate or higher)
+    audit:
+      run: bun audit --audit-level=moderate
