@@ -1,11 +1,12 @@
 <script lang="ts">
-  
+  import TestCards from "./test-cards.svelte";
 </script>
 
-<main class="min-h-screen pt-40 flex flex-col gap-10">
-  {#each { length: 15 } as x, i}
-    <div class="outline-2 outline-white bg-white/15 h-200">
-      <h2 class="text-center">Item {i + 1}</h2>
-    </div>
-  {/each}
+<main class="pt-20 flex flex-col gap-10">
+  <TestCards full/>
+  <TestCards full class="grid-rows-1 h-[calc(649px/2-30px)]"/>
 </main>
+
+<style>
+  
+</style>
