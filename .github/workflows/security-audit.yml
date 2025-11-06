@@ -22,4 +22,4 @@ jobs:
           bun-version: latest
 
       - name: 🔎 Run Bun Security Audit
-        run: bun audit
+        run: bun audit --audit-level=high
