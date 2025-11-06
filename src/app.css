@@ -1,2 +1,18 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@font-face {
+  font-family: "Burbank Big Condensed";
+  src: url("/fonts/Burbank Big Condensed Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Burbank Big Regular";
+  src: url("/fonts/Burbank Big Regular Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}

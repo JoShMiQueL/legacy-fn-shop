@@ -1,15 +1,9 @@
 <script lang="ts">
-  let count = $state(0)
-  const doubled = $derived(count * 2)
-  function increment() {
-    count++
-  }
-  function decrement() {
-    count--
-  }
+  import Header from "../components/header.svelte"
+  import Shop from "../components/shop.svelte"
 </script>
 
-<button onclick={decrement}>Decrement</button>
-<button onclick={increment}>Increment</button>
-<p>Count: {count}</p>
-<p>Doubled: {doubled}</p>
+<div class="bg-radial text-white from-[#0596fc] to-[#0c44b3] min-h-screen">
+  <Header />
+  <Shop />
+</div>
