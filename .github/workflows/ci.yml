@@ -1,0 +1,33 @@
+name: CI Svelte, Bun, & Vite
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: 📦 Install Dependencies with Bun
+        run: bun install
+
+      - name: 🏗️ Build Project with Vite
+        run: bun run build
+
+      - name: 🧪 Run Tests
+        run: bun test

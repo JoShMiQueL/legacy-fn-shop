@@ -1,0 +1,30 @@
+name: Lint and Code Style
+
+on:
+  pull_request: # Recommended to run on PRs before merging
+    branches:
+      - main
+      - develop
+  push:
+    branches:
+      - main
+      - develop
+      
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: 📦 Install Dependencies
+        run: bun install
+
+      - name: 🔍 Run Lint and Format
+        run: bun run biome:ci
